@@ -1,0 +1,33 @@
+- name: Example of conditional takss
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+          - name: install httpd only  debain family server
+            apt:
+                    name: httpd
+                    state: installed
+            when: ansible_distribution == 'ubuntu'
+
+
+          - name: install httpd only redhat family server
+            yum:
+                    name: httpd
+                    state: installed
+            when: ansible_distribution == 'RedHat'
+
+
+          - name: install  ftp  only redhat/centos/fedora family server
+            yum:
+                    name: httpd
+                    state: installed
+            when: ansible_distribution == 'RedHat' or 'CentOS' or 'Fedora'
+
+
+          - name: install  vsftpd   only redhat 7
+            yum:
+                    name: httpd
+                    state: installed
+            when: ansible_distribution == 'RedHat' and  ansible_distribution_major_version == '7'
+
+

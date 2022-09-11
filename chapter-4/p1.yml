@@ -1,0 +1,32 @@
+- name: Example of  Playbook level variale
+  hosts: all
+  become: true
+  vars:
+     webpkg: httpd
+     webroot: /var/www/html/data
+  tasks:
+          - name: Install the pckage
+            yum:
+                    name: "{{webpkg}}"
+                    state: installed
+
+
+
+
+          - name: Create  "{{ webroot }}"
+            file:
+                    path: "{{ webroot }}"
+                    state: directory
+
+
+          - name: Create index.html page inside  "{{ webroot }}"
+            copy:
+                    content: "hellworld"
+                    dest: "{{ webroot }}/index.html"
+
+
+          - name: Start apache service
+            service:
+                   name: "{{ webpkg }}"
+                   state: started
+                   enabled: true

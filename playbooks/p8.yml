@@ -1,0 +1,25 @@
+- name: Deploying Webserver
+  hosts: web
+  become: true
+  gather_facts: false
+  user: ec2-user
+  tasks:
+    - name: Create directory directory /tmp/demo dictionary
+      file:
+            path: /tmp/demo
+            state: directory
+            mode: 0755
+
+
+
+    - name: Example of single line format
+      file: path=/tmp/demo state=directory  mode=0777 owner=root  group=root
+
+
+
+    - name: Example of Multi line formate
+      file: path=/tmp/demo
+            state=directory
+            mode=0777
+            owner=root
+            group=root 

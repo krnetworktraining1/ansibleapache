@@ -1,0 +1,10 @@
+- name: Example of Simple Loop
+  hosts: all
+  become: true
+  tasks:
+
+          - name: add users and apply pasword
+            user:
+                    name: "{{ item }}"
+                    state: present
+            with_items: "{{ query('lines', 'cat testuser') }}"

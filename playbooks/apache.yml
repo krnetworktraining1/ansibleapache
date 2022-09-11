@@ -1,0 +1,19 @@
+- name: Deploying Webserver
+  hosts: all
+  become: true
+  tasks:
+          - name: Install httpd package
+            yum:
+                    name: httpd
+                    state: installed
+
+          - name: copy files into /var/www/html
+            copy:
+                    src: files/index.html
+                    dest: /var/www/html
+
+          - name: httpd service start
+            service:
+                   name: httpd
+                   state: started
+                   enabled: true

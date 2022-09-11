@@ -1,0 +1,22 @@
+- name: Example of vault
+  hosts: web
+  vars_files:
+           ~/vault/crypt.yml
+  tasks:
+          - name: add  user and apply password
+            user:
+                    name: ravi
+                    password: "{{ mypass | password_hash('sha512')}}"
+                    state: present
+
+- name: Example of vault
+  hosts: dev
+  vars_files:
+           ~/vault/abc.yml
+  tasks:
+          - name: add  user and apply password
+            user:
+                    name: ravi
+                    password: "{{ mypass | password_hash('sha512')}}"
+                    state: present
+

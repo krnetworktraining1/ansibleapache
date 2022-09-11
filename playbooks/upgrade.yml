@@ -1,0 +1,4 @@
+- name: Upgrade apache
+  yum: 
+     name: httpd
+     state: latest

@@ -1,0 +1,13 @@
+- name: Example of  Playbook level variale
+  hosts: all
+  become: true
+  vars:
+          mypkg:
+            - httpd
+            - vsftpd
+  tasks:
+
+          - name: Install the pckage
+            yum:
+                    name: "{{ mypkg }}"
+                    state: installed

@@ -1,0 +1,18 @@
+- name: Example of register variable
+  hosts: all
+  become: true
+  tasks:
+          - name: check h/w mode 
+            command: uname -m
+            register: xyz
+
+
+          - debug:
+                  var: xyz
+
+
+
+          - name: store inside motd file
+            copy:
+                    content: "this is your h/w mode {{ xyz.stdout }}"
+                    dest: /etc/motd

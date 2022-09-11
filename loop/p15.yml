@@ -1,0 +1,12 @@
+- name: Example of List of has Loop
+  hosts: all
+  become: true
+  tasks:
+          - name: Read users from CSV file and return a list
+            read_csv:
+                  path: users.csv
+                  fieldnames: name,uid,gid
+                  delimiter: ';'
+                  register: users
+            delegate_to: localhost
+

@@ -1,0 +1,19 @@
+- hosts: web,dev
+  become: true
+  gather_facts: false
+  tasks:
+    - file:
+            path: /tmp/demo
+            state: directory
+            mode: 0755
+    - copy:
+             src: /etc/fstab
+             dest: /tmp/demo
+    - service:
+            name: crond
+            state: restarted
+    - yum:
+            name:
+                - ftp
+                - httpd
+            state: installed

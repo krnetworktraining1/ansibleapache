@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+          - copy:
+                  src: "{{ item }}"
+                  dest: /tmp
+            with_items:
+                    - /etc/passwd
+                    - /etc/fstab

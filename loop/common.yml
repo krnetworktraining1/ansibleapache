@@ -1,0 +1,13 @@
+myusers:
+                  - username: ravi
+                    pw: redhat
+                    grp: staff
+
+                  - username: shyam
+                    pw: fedora
+                    grp: guests
+
+                  - username: ram
+                    pw: centos
+                    grp: manager
+

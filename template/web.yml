@@ -1,0 +1,12 @@
+- name: Example of Template file
+  hosts: all
+  gather_facts: true
+  become: true
+  vars:
+          webroot: /var/www/html/data
+  tasks:
+
+          - name: Copy jinja file
+            template:
+                    src: httpd.conf.j2
+                    dest: /tmp/abc.conf

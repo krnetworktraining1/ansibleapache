@@ -1,0 +1,19 @@
+- name: Example of Simple Loop
+  hosts: all
+  become: true
+  vars:
+          myusers:
+              - ram
+              - shyam
+              - krishna
+              - manish
+  tasks:
+          - name: add users and apply pasword
+            user:
+                    name: "{{ item }}"
+                    state: present
+                    groups: staff,guests,manager
+                    append: yes
+                    group: wheel 
+            with_items:
+                    - "{{ myusers }}"

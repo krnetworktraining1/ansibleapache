@@ -1,0 +1,8 @@
+- name: Example of setup modules
+  hosts: all
+  become: true
+  tasks:
+            - name: store kernel version in /etc/motd file
+              copy:
+                      content: "{{ ansible_kernel }}"
+                      dest: /etc/motd

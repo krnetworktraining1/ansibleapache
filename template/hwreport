@@ -1,0 +1,9 @@
+FQDN={{ ansible_fqdn }}
+IPADDRESS={{ ansible_eth0.ipv4.address }}
+BIOS_VERSION={{ ansible_bios_version }}
+xvdaSIZE={{ ansible_devices.xvda.size }}
+{% if xyz.stat.exists == 'true' %}
+xvdbSIZE={{ ansible_devices.xvda.size }}
+{% else %}
+xvdbSIZE=None
+{% endif %}

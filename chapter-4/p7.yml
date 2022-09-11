@@ -1,0 +1,11 @@
+- hosts: all
+  become: true
+  tasks:
+            - name: create directory 
+              file:
+                      path: "{{ webroot }}"
+                      state: directory
+
+
+            - debug:
+                    var: webroot

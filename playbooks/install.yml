@@ -1,0 +1,11 @@
+- name: crond Service Restart
+  service:
+            name: crond
+            state: restarted
+- name: Install ftp httpd package
+  yum:
+            name:
+                - ftp
+                - httpd
+            state: installed
+

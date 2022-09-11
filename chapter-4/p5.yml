@@ -1,0 +1,17 @@
+- name: Example of  Playbook level variale
+  hosts: all
+  become: true
+  vars:
+       myusers:
+           - ram:
+                 uid: 1020
+                 pw: redhat
+           - shyam:
+                 uid: 2010
+                 pw: redhat1
+  tasks:
+
+          - name: Install the pckage
+            yum:
+                    name: "{{ mypkg }}"
+                    state: installed

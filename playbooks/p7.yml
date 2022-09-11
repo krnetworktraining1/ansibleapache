@@ -1,0 +1,22 @@
+- name: Deploying Webserver
+  hosts: web
+  become: true
+  gather_facts: false
+  user: ec2-user
+  tasks:
+    - name: Create directory directory /tmp/demo
+      file:
+            path: /tmp/demo
+            state: directory
+            mode: 0755
+    - name: Copy /etc/fstab file into /tmp/demo
+      copy:
+             src: /etc/fstab
+             dest: /tmp/demo
+
+    - name: Import tasks another file
+      include_tasks: /home/ec2-user/playbooks/install.yml 
+
+
+    - name: Import apache upgrade task file
+      import_tasks: /home/ec2-user/playbooks/upgrade.yml

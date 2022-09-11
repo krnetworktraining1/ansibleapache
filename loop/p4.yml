@@ -1,0 +1,12 @@
+- name: Example of Simple Loop
+  hosts: all
+  become: true
+  vars_files:
+          - ~/loop/users.yml
+  tasks:
+          - name: add users and apply pasword
+            user:
+                    name: "{{ item }}"
+                    state: present
+            with_items:
+                    - "{{ myusers }}"

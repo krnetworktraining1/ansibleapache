@@ -1,0 +1,17 @@
+- name: Example of conditional takss
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+          - name: first check file existance
+            stat:
+                    path: /tmp/abc.conf
+            register: xyz
+
+
+
+          - name: create file if does not exists
+            copy:
+                 content: "nameserver 192.168.0.1"
+                 dest: /tmp/abc.conf
+            when: xyz.stat.exists == false

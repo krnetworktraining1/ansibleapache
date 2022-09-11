@@ -1,0 +1,19 @@
+- name: Example of Template file
+  hosts: all
+  gather_facts: true
+  become: true
+  tasks:
+          - name: first check disk existance
+            stat:
+                    path: /dev/xvdb
+            register: xyz
+          
+          - debug:
+                  var: xyz
+
+
+          - name: copy h/w report
+            template: 
+                src: hwreport
+                dest: /tmp/report
+            

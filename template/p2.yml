@@ -1,0 +1,14 @@
+- name: Example of Template file
+  hosts: all
+  gather_facts: true
+  become: true
+  tasks:
+          - name: copy modules
+            blockinfile:
+                    block: |
+                             hello ansible dfbsldf 
+                             sdsbbsdjsdsdfsfdf
+                             lsdfsdfbsdfsdfsdfdfs
+                             ljsdblsdfsdfsdfknfknsdf
+                             lsdblsdfsdfnsdknfksdnfsd;f
+                    path: /tmp/abc

@@ -1,0 +1,9 @@
+- name: Example of Template file
+  hosts: all
+  gather_facts: true
+  become: true
+  tasks:
+          - name: copy  jina2 file
+            template:
+                    src: hosts.j2
+                    dest: /etc/myhosts

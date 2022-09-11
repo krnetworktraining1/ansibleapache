@@ -1,0 +1,8 @@
+- name: Example of setup modules
+  hosts: all
+  become: true
+  tasks:
+          - name: add line ipaddress and hostname inside /etc/hosts file
+            lineinfile:
+                    line: "{{ ansible_default_ipv4.address }} {{ ansible_hostname }}"
+                    dest: /etc/hosts

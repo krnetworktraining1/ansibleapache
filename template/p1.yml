@@ -1,0 +1,17 @@
+- name: Example of Template file
+  hosts: all
+  gather_facts: true
+  become: true
+  vars:
+          user: ram
+  tasks:
+          - name: check disk state 
+            stat:
+                    path: /dev/sdb
+            register: xyz
+
+
+          - name: Copy jinja file
+            template:
+                   src: motd.j2
+                   dest: /etc/motd

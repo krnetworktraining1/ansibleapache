@@ -1,0 +1,23 @@
+- name: Example of List of has Loop
+  hosts: all
+  become: true
+  vars_files:
+          - common.yml
+  tasks:
+          - name: first add three groups
+            group:
+                   name: "{{ item }}"
+                   state: present
+            with_items:
+                    - staff
+                    - guests
+                    - manager
+
+
+
+          - name: add user  into different group with password
+            user:
+                    name: "{{ item.username }}"
+                    password: "{{ item.pw | password_hash('sha512') }}"
+                    group: "{{ item.grp }}"
+            with_items: "{{ myusers }}"

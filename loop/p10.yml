@@ -1,0 +1,11 @@
+- name: Example of Nested  Loop
+  hosts: all
+  become: true
+  tasks:
+          - name: copies the files into directories
+            copy:
+                    src: "{{ item[0] }}"
+                    dest: "{{ item[1] }}"
+            with_nested:
+                    - { '/etc/passwd', '/etc/fstab', '/etc/group' }
+                    - { '/root', '/opt', '/tmp' }

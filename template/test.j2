@@ -1,0 +1,8 @@
+welcome to  jinaj file
+{% if ansible_distribution == 'RedHat' %}
+we are working Enterprise linux server
+{% elif ansible_distribution == 'Centos' %}
+this is also enterprise platform
+{% else %}
+this is not enterpise
+{% endif %}
