@@ -1,0 +1,17 @@
+- name: Install httpd
+  yum:
+         name: "{{ websvc }}"
+         state: installed
+
+- name: Start httpd service
+  service:
+          name: "{{ websvc }}"
+          state: started
+          enabled: true
+
+- name: Create directory
+  file:
+          path: "{{ webroot }}"
+          state: directory
+- name: Import further tasks from other files
+  import_tasks: install.yml

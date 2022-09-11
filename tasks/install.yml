@@ -1,0 +1,16 @@
+- name: copies files
+  copy:
+       src: test/
+       dest: "{{ webroot }}"
+
+- include_vars: test.yml
+
+
+- name: copies jinja2 files
+  template:
+         src: web.conf.j2
+         dest: "{{ web_config }}"
+  notify: restart_apache
+
+
+
